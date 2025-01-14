@@ -8,9 +8,9 @@ type TQuiz = {
 };
 
 const initialState: TQuiz = {
-  question: quizData,
+  question: [],
+  userAnswers: [],
   currentQuestionIndex: 0,
-  userAnswers: Array(quizData.length).fill(null),
   quizComplete: false,
 };
 
@@ -36,9 +36,17 @@ export const quizSlice = createSlice({
     completeQuiz: (state) => {
       state.quizComplete = true;
     },
+    setQuiz: (state, action) => {
+      state.question = action.payload;
+    },
   },
 });
-export const { setAnswer, nextQuestion, previousQuestion, completeQuiz } =
-  quizSlice.actions;
+export const {
+  setAnswer,
+  nextQuestion,
+  previousQuestion,
+  completeQuiz,
+  setQuiz,
+} = quizSlice.actions;
 
 export default quizSlice.reducer;

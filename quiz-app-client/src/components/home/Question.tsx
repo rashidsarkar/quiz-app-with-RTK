@@ -27,37 +27,41 @@ export default function Question() {
   };
   // console.log(currentAns);
   return (
-    <div className="flex justify-center ">
-      <Card className="w-[350px]">
-        <CardHeader>
-          <CardTitle>{currentQuestion.question}</CardTitle>
-          <CardDescription>
-            Question {currentQuestionIndex + 1} of {question.length}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {currentQuestion.options.map((item) => {
-            return (
-              <Button
-                onClick={() => handleAnswerChange(item)}
-                size={"lg"}
-                className="w-full mt-3"
-                variant={currentAns === item ? "default" : "outline"}
+    <div>
+      {question.length > 0 && (
+        <div className="flex justify-center ">
+          <Card className="w-[350px]">
+            <CardHeader>
+              <CardTitle>{currentQuestion.question}</CardTitle>
+              <CardDescription>
+                Question {currentQuestionIndex + 1} of {question.length}
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              {currentQuestion.options.map((item) => {
+                return (
+                  <Button
+                    onClick={() => handleAnswerChange(item)}
+                    size={"lg"}
+                    className="w-full mt-3"
+                    variant={currentAns === item ? "default" : "outline"}
 
-                // className={cn("w-full mt-3", {
-                //   "bg-green-500": currentAns === item,
-                //   // "bg-gray-300": currentAns !== item,
-                // })}
-              >
-                {item}
-              </Button>
-            );
-          })}
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <QuizControl />
-        </CardFooter>
-      </Card>
+                    // className={cn("w-full mt-3", {
+                    //   "bg-green-500": currentAns === item,
+                    //   // "bg-gray-300": currentAns !== item,
+                    // })}
+                  >
+                    {item}
+                  </Button>
+                );
+              })}
+            </CardContent>
+            <CardFooter className="flex justify-between">
+              <QuizControl />
+            </CardFooter>
+          </Card>
+        </div>
+      )}
     </div>
   );
 }
